@@ -1,0 +1,27 @@
+{
+  "name": "weather-to-cloudwatch",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@types/jest": "^29.2.3",
+    "@types/node": "^18.11.10",
+    "esbuild": "0.15.16",
+    "jest": "^29.3.1",
+    "ts-jest": "29.0.3",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.223.0",
+    "@aws-sdk/client-cloudwatch": "^3.223.0",
+    "aws-cdk": "^2.53.0",
+    "aws-cdk-lib": "^2.53.0",
+    "constructs": "^10.1.165",
+    "typescript": "^4.9.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest --coverage --detectOpenHandles",
+    "cdk": "cdk --verbose"
+  }
+}

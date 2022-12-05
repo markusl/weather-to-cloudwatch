@@ -1,0 +1,5 @@
+{
+  "app": "npx ts-node bin/main.ts",
+  "context": {
+  }
+}
