@@ -33,20 +33,17 @@ export class WeatherToCloudWatch extends cdk.Stack {
       }),
     });
 
+    const appId = ssm.StringParameter.fromStringParameterName(this, 'AppId', 'OPEN_WEATHER_APP_ID').stringValue;
     const updateWeatherFunction = new lambda_nodejs.NodejsFunction(this, 'WeatherToCloudWatch', {
-      runtime: lambda.Runtime.NODEJS_18_X,
+      runtime: lambda.Runtime.NODEJS_20_X,
       bundling: {
         minify: true,
-        externalModules: [
-          '@aws-sdk/client-s3',
-          '@aws-sdk/client-cloudwatch',
-        ],
       },
       memorySize: 256,
       timeout: cdk.Duration.minutes(1),
       architecture: lambda.Architecture.ARM_64,
       environment: {
-        OPEN_WEATHER_APP_ID: ssm.StringParameter.fromStringParameterName(this, 'AppId', 'OPEN_WEATHER_APP_ID').stringValue
+        OPEN_WEATHER_APP_ID: appId,
       },
     });
 

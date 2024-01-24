@@ -82,7 +82,7 @@ exports[`WeatherToCloudWatch synthetizes expected template 1`] = `
             "Arn",
           ],
         },
-        "Runtime": "nodejs18.x",
+        "Runtime": "nodejs20.x",
         "Timeout": 60,
       },
       "Type": "AWS::Lambda::Function",
@@ -168,7 +168,7 @@ exports[`WeatherToCloudWatch synthetizes expected template 1`] = `
         "EncryptionKey": "alias/aws/s3",
         "Environment": {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:7.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
@@ -438,7 +438,7 @@ exports[`WeatherToCloudWatch synthetizes expected template 1`] = `
                   "Version": "1",
                 },
                 "Configuration": {
-                  "EnvironmentVariables": "[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"e0f4822031066107e1c3913016095aaedfa15bc7cea15d7405133bc5d55d02d3"}]",
+                  "EnvironmentVariables": "[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"cc0977b5ac7283671cc21fdc754ecccd59d7f04984a7925323bab8bfa50d6e7c"}]",
                   "ProjectName": {
                     "Ref": "WeatherToCloudWatchPipelineBuildSynthCdkBuildProject4B598C0F",
                   },
@@ -475,7 +475,7 @@ exports[`WeatherToCloudWatch synthetizes expected template 1`] = `
                   "Version": "1",
                 },
                 "Configuration": {
-                  "EnvironmentVariables": "[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"c302495089e029880b6057af1b45e7ba2ecd996ed4944c2a9238447daed4a388"}]",
+                  "EnvironmentVariables": "[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"7cf8d089fc7cd92c9bf13bafeb66273ae6c7f631d474a7bea6d9ac2ddd0cfff1"}]",
                   "ProjectName": {
                     "Ref": "WeatherToCloudWatchPipelineUpdatePipelineSelfMutation1A8D496A",
                   },
@@ -507,27 +507,12 @@ exports[`WeatherToCloudWatch synthetizes expected template 1`] = `
           "Statement": [
             {
               "Action": "sts:AssumeRole",
-              "Condition": {
-                "Bool": {
-                  "aws:ViaAWSService": "codepipeline.amazonaws.com",
-                },
-              },
               "Effect": "Allow",
               "Principal": {
                 "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId",
-                      },
-                      ":root",
-                    ],
+                  "Fn::GetAtt": [
+                    "WeatherToCloudWatchPipelineRoleE9DDE380",
+                    "Arn",
                   ],
                 },
               },
@@ -810,7 +795,7 @@ exports[`WeatherToCloudWatch synthetizes expected template 1`] = `
         "EncryptionKey": "alias/aws/s3",
         "Environment": {
           "ComputeType": "BUILD_GENERAL1_SMALL",
-          "Image": "aws/codebuild/standard:5.0",
+          "Image": "aws/codebuild/standard:7.0",
           "ImagePullCredentialsType": "CODEBUILD",
           "PrivilegedMode": false,
           "Type": "LINUX_CONTAINER",
